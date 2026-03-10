@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aditya Sankpal | CS Student & Developer</title>
+    <meta name="description" content="Portfolio of Aditya Sankpal - Computer Science Student at Ghraisoni International Skill Tech University">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Space Grotesk', 'sans-serif'],
+                    },
+                    colors: {
+                        violet: {
+                            400: '#a78bfa',
+                            500: '#8b5cf6',
+                            600: '#7c3aed',
+                            700: '#6d28d9',
+                            800: '#5b21b6',
+                            900: '#4c1d95',
+                        },
+                        indigo: {
+                            450: '#6366f1',
+                        }
+                    },
+                    animation: {
+                        'gradient': 'gradient 8s linear infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        gradient: {
+                            '0%, 100%': { backgroundPosition: '0% 50%' },
+                            '50%': { backgroundPosition: '100% 50%' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        body {
+            background-color: #0f172a;
+            color: #e2e8f0;
+        }
+        
+        .glass {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(139, 92, 246, 0.2);
+        }
+        
+        .neon-glow {
+            box-shadow: 0 0 20px rgba(139, 92, 246, 0.5), 0 0 40px rgba(139, 92, 246, 0.3);
+        }
+        
+        .text-gradient {
+            background: linear-gradient(135deg, #a78bfa 0%, #6366f1 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .skill-bar {
+            background: linear-gradient(90deg, #7c3aed 0%, #6366f1 100%);
+            transition: width 1.5s ease-out;
+        }
+        
+        .project-card:hover .project-overlay {
+            opacity: 1;
+        }
+        
+        .project-card:hover img {
+            transform: scale(1.1);
+        }
+        
+        .feedback-item {
+            animation: slideIn 0.3s ease-out;
+        }
+        
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        .custom-cursor {
+            cursor: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='12' cy='12' r='6' fill='%238b5cf6' fill-opacity='0.5'/%3E%3Ccircle cx='12' cy='12' r='3' fill='%23a78bfa'/%3E%3C/svg%3E") 12 12, auto;
+        }
+    </style>
+</head>
+<body class="custom-cursor antialiased overflow-x-hidden">
+
+    <!-- Header & Navigation -->
+    <header class="fixed w-full top-0 z-50 glass border-b border-violet-500/20">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center gap-2">
+                <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-violet-500 to-indigo-600 flex items-center justify-center font-display font-bold text-xl text-white">
+                    AS
+                </div>
+                <span class="font-display font-bold text-xl text-white hidden sm:block">Aditya Sankpal</span>
+            </div>
+            
+            <!-- Desktop Navigation -->
+            <ul class="hidden md:flex gap-8 text-sm font-medium text-gray-300">
+                <li><a href="#about" class="hover:text-violet-400 transition-colors duration-300">About</a></li>
+                <li><a href="#skills" class="hover:text-violet-400 transition-colors duration-300">Skills</a></li>
+                <li><a href="#projects" class="hover:text-violet-400 transition-colors duration-300">Projects</a></li>
+                <li><a href="#feedback" class="hover:text-violet-400 transition-colors duration-300">Feedback</a></li>
+                <li><a href="#contact" class="px-4 py-2 rounded-lg bg-violet-600 hover:bg-violet-700 text-white transition-all duration-300 neon-glow">Contact</a></li>
+            </ul>
+            
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-btn" class="md:hidden text-white hover:text-violet-400 transition-colors">
+                <i data-lucide="menu" class="w-6 h-6"></i>
+            </button>
+        </nav>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden glass border-t border-violet-500/20">
+            <ul class="flex flex-col py-4 px-6 gap-4 text-gray-300">
+                <li><a href="#about" class="block hover:text-violet-400 transition-colors">About</a></li>
+                <li><a href="#skills" class="block hover:text-violet-400 transition-colors">Skills</a></li>
+                <li><a href="#projects" class="block hover:text-violet-400 transition-colors">Projects</a></li>
+                <li><a href="#feedback" class="block hover:text-violet-400 transition-colors">Feedback</a></li>
+                <li><a href="#contact" class="block text-violet-400 font-medium">Contact</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
+        <!-- Animated Background Elements -->
+        <div class="absolute inset-0 overflow-hidden">
+            <div class="absolute top-20 left-10 w-72 h-72 bg-violet-600/20 rounded-full blur-3xl animate-float"></div>
+            <div class="absolute bottom-20 right-10 w-96 h-96 bg-indigo-600/20 rounded-full blur-3xl animate-float" style="animation-delay: 2s;"></div>
+            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-violet-500/10 rounded-full blur-3xl"></div>
+        </div>
+        
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="max-w-4xl mx-auto text-center">
+                <div class="inline-block mb-4 px-4 py-1 rounded-full glass border border-violet-500/30 text-violet-300 text-sm font-medium">
+                    <span class="animate-pulse">●</span>
+                </div>
+                <h1 class="font-display text-5xl md:text-7xl lg:text-8xl font-bold mb-6 leading-tight">
+                    Hi, I'm <span class="text-gradient">Aditya</span>
+                </h1>
+                <div class="h-12 mb-8">
+                    <span id="typewriter" class="text-xl md:text-2xl text-gray-400 font-light"></span>
+                    <span class="animate-pulse text-violet-400">|</span>
+                </div>
+                <p class="text-lg md:text-xl text-gray-400 mb-10 max-w-2xl mx-auto leading-relaxed">
+                    Computer Science student at <span class="text-violet-400 font-semibold">Ghraisoni International Skill Tech University</span>. 
+                    Passionate about building innovative web applications and solving complex problems.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                    <a href="#projects" class="px-8 py-4 rounded-lg bg-gradient-to-r from-violet-600 to-indigo-600 text-white font-semibold hover:scale-105 transition-transform duration-300 neon-glow flex items-center gap-2">
+                        View Projects <i data-lucide="arrow-down-right" class="w-5 h-5"></i>
+                    </a>
+                    <a href="https://github.com" target="_blank" class="px-8 py-4 rounded-lg glass border border-violet-500/30 text-white font-semibold hover:bg-violet-600/20 transition-all duration-300 flex items-center gap-2">
+                        <i data-lucide="github" class="w-5 h-5"></i> GitHub
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Me Section -->
+    <section id="about" class="py-24 relative">
+        <div class="container mx-auto px-6">
+            <div class="max-w-6xl mx-auto">
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div class="relative group">
+                        <div class="absolute inset-0 bg-gradient-to-br from-violet-600 to-indigo-600 rounded-2xl blur-2xl opacity-30 group-hover:opacity-50 transition-opacity duration-500"></div>
+                        <div class="relative glass rounded-2xl p-2">
+                            <img src="aditya.png" alt="Aditya Sankpal workspace" class="w-full rounded-xl grayscale group-hover:grayscale-0 transition-all duration-500">
+                        </div>
+                        <!-- Floating Stats Card -->
+                        <div class="absolute -bottom-6 -right-6 glass rounded-xl p-4 border border-violet-500/30 hidden md:block">
+                            <div class="text-3xl font-bold text-gradient">3+</div>
+                            <div class="text-sm text-gray-400">Years Coding</div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h2 class="font-display text-4xl md:text-5xl font-bold mb-6">
+                            About <span class="text-gradient">Me</span>
+                        </h2>
+                        <div class="space-y-4 text-gray-300 leading-relaxed">
+                            <p>
+                                I'm <strong class="text-white">Aditya Sankpal</strong>, a dedicated Computer Science student currently pursuing my BTech at 
+                                <span class="text-violet-400">Ghraisoni International Skill Tech University</span>.
+                            </p>
+                            <p>
+                                My journey in tech started with a curiosity about how things work behind the screen. Today, I specialize in 
+                                full-stack web development, with a keen eye for creating responsive, user-friendly applications that solve real-world problems.
+                            </p>
+                            <p>
+                                When I'm not coding, you'll find me exploring new technologies, contributing to open-source projects, or 
+                                solving algorithmic challenges to sharpen my problem-solving skills.
+                            </p>
+                        </div>
+                        
+                        <div class="mt-8 grid grid-cols-3 gap-4">
+                            <div class="text-center p-4 rounded-lg glass border border-violet-500/20">
+                                <i data-lucide="code-2" class="w-6 h-6 mx-auto mb-2 text-violet-400"></i>
+                                <div class="font-semibold text-white">Clean Code</div>
+                            </div>
+                            <div class="text-center p-4 rounded-lg glass border border-violet-500/20">
+                                <i data-lucide="lightbulb" class="w-6 h-6 mx-auto mb-2 text-violet-400"></i>
+                                <div class="font-semibold text-white">Innovative</div>
+                            </div>
+                            <div class="text-center p-4 rounded-lg glass border border-violet-500/20">
+                                <i data-lucide="zap" class="w-6 h-6 mx-auto mb-2 text-violet-400"></i>
+                                <div class="font-semibold text-white">Fast Learner</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-24 bg-slate-900/50 relative overflow-hidden">
+        <!-- Background Grid -->
+        <div class="absolute inset-0" style="background-image: linear-gradient(rgba(139, 92, 246, 0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(139, 92, 246, 0.05) 1px, transparent 1px); background-size: 50px 50px;"></div>
+        
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="max-w-4xl mx-auto">
+                <div class="text-center mb-16">
+                    <h2 class="font-display text-4xl md:text-5xl font-bold mb-4">
+                        Technical <span class="text-gradient">Skills</span>
+                    </h2>
+                    <p class="text-gray-400">Technologies I work with to bring ideas to life</p>
+                </div>
+                
+                <div class="space-y-8">
+                    <!-- Programming Languages -->
+                    <div class="glass rounded-2xl p-6 border border-violet-500/20">
+                        <h3 class="text-xl font-semibold mb-4 flex items-center gap-2 text-white">
+                            <i data-lucide="terminal" class="w-5 h-5 text-violet-400"></i>
+                            Programming Languages
+                        </h3>
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div class="space-y-2">
+                                <div class="flex justify-between text-sm">
+                                    <span class="text-gray-300">JavaScript</span>
+                                    <span class="text-violet-400">90%</span>
+                                </div>
+                                <div class="h-2 bg-slate-700 rounded-full overflow-hidden">
+                                    <div class="skill-bar h-full rounded-full" style="width: 0%" data-width="90"></div>
+                                </div>
+                            </div>
+                            <div class="space-y-2">
+                                <div class="flex justify-between text-sm">
+                                    <span class="text-gray-300">Python</span>
+                                    <span class="text-violet-400">85%</span>
+                                </div>
+                                <div class="h-2 bg-slate-700 rounded-full overflow-hidden">
+                                    <div class="skill-bar h-full rounded-full" style="width: 0%" data-width="85"></div>
+                                </div>
+                            </div>
+                            <div class="space-y-2">
+                                <div class="flex justify-between text-sm">
+                                    <span class="text-gray-300">C/C++</span>
+                                    <span class="text-violet-400">80%</span>
+                                </div>
+                                <div class="h-2 bg-slate-700 rounded-full overflow-hidden">
+                                    <div class="skill-bar h-full rounded-full" style="width: 0%" data-width="80"></div>
+                                </div>
+                            </div>
+                            <div class="space-y-2">
+                                <div class="flex justify-between text-sm">
+                                    <span class="text-gray-300">HTML/CSS</span>
+                                    <span class="text-violet-400">95%</span>
+                                </div>
+                                <div class="h-2 bg-slate-700 rounded-full overflow-hidden">
+                                    <div class="skill-bar h-full rounded-full" style="width: 0%" data-width="95"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Frameworks & Tools -->
+                    <div class="grid md:grid-cols-3 gap-4">
+                        <div class="glass rounded-xl p-6 border border-violet-500/20 text-center hover:border-violet-500/50 transition-colors">
+                            <i data-lucide="layout" class="w-10 h-10 mx-auto mb-3 text-violet-400"></i>
+                            <h4 class="font-semibold text-white mb-1">React.js</h4>
+                            <p class="text-sm text-gray-400">Frontend Development</p>
+                        </div>
+                        <div class="glass rounded-xl p-6 border border-violet-500/20 text-center hover:border-violet-500/50 transition-colors">
+                            <i data-lucide="server" class="w-10 h-10 mx-auto mb-3 text-violet-400"></i>
+                            <h4 class="font-semibold text-white mb-1">Node.js</h4>
+                            <p class="text-sm text-gray-400">Backend Development</p>
+                        </div>
+                        <div class="glass rounded-xl p-6 border border-violet-500/20 text-center hover:border-violet-500/50 transition-colors">
+                            <i data-lucide="git-branch" class="w-10 h-10 mx-auto mb-3 text-violet-400"></i>
+                            <h4 class="font-semibold text-white mb-1">Git/GitHub</h4>
+                            <p class="text-sm text-gray-400">Version Control</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-24">
+        <div class="container mx-auto px-6">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-16">
+                    <h2 class="font-display text-4xl md:text-5xl font-bold mb-4">
+                        Featured <span class="text-gradient">Projects</span>
+                    </h2>
+                    <p class="text-gray-400">Some of my recent work and experiments</p>
+                </div>
+                
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Project 1 -->
+                    <div class="project-card group rounded-2xl overflow-hidden glass border border-violet-500/20 hover:border-violet-500/50 transition-all duration-500">
+                        <div class="relative overflow-hidden h-48">
+                            <img src="http://static.photos/technology/640x360/123" alt="Weather Dashboard" class="w-full h-full object-cover transition-transform duration-500">
+                            <div class="project-overlay absolute inset-0 bg-slate-900/80 opacity-0 transition-opacity duration-300 flex items-center justify-center gap-4">
+                                <a href="#" class="p-3 rounded-full bg-violet-600 text-white hover:bg-violet-700 transition-colors">
+                                    <i data-lucide="external-link" class="w-5 h-5"></i>
+                                </a>
+                                <a href="#" class="p-3 rounded-full bg-slate-700 text-white hover:bg-slate-600 transition-colors">
+                                    <i data-lucide="github" class="w-5 h-5"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-white mb-2 group-hover:text-violet-400 transition-colors">Weather Dashboard</h3>
+                            <p class="text-gray-400 text-sm mb-4">Real-time weather tracking application with interactive maps using OpenWeather API and Chart.js for data visualization.</p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-3 py-1 rounded-full text-xs bg-violet-600/20 text-violet-300 border border-violet-500/30">JavaScript</span>
+                                <span class="px-3 py-1 rounded-full text-xs bg-violet-600/20 text-violet-300 border border-violet-500/30">API</span>
+                                <span class="px-3 py-1 rounded-full text-xs bg-violet-600/20 text-violet-300 border border-violet-500/30">CSS3</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Project 2 -->
+                    <div class="project-card group rounded-2xl overflow-hidden glass border border-violet-500/20 hover:border-violet-500/50 transition-all duration-500">
+                        <div class="relative overflow-hidden h-48">
+                            <img src="http://static.photos/workspace/640x360/456" alt="Task Manager" class="w-full h-full object-cover transition-transform duration-500">
+                            <div class="project-overlay absolute inset-0 bg-slate-900/80 opacity-0 transition-opacity duration-300 flex items-center justify-center gap-4">
+                                <a href="#" class="p-3 rounded-full bg-violet-600 text-white hover:bg-violet-700 transition-colors">
+                                    <i data-lucide="external-link" class="w-5 h-5"></i>
+                                </a>
+                                <a href="#" class="p-3 rounded-full bg-slate-700 text-white hover:bg-slate-600 transition-colors">
+                                    <i data-lucide="github" class="w-5 h-5"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-white mb-2 group-hover:text-violet-400 transition-colors">TaskFlow Pro</h3>
+                            <p class="text-gray-400 text-sm mb-4">Advanced task management system with drag-and-drop functionality, localStorage persistence, and deadline tracking.</p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-3 py-1 rounded-full text-xs bg-violet-600/20 text-violet-300 border border-violet-500/30">React</span>
+                                <span class="px-3 py-1 rounded-full text-xs bg-violet-600/20 text-violet-300 border border-violet-500/30">Tailwind</span>
+                                <span class="px-3 py-1 rounded-full text-xs bg-violet-600/20 text-violet-300 border border-violet-500/30">LocalStorage</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Project 3 -->
+                    <div class="project-card group rounded-2xl overflow-hidden glass border border-violet-500/20 hover:border-violet-500/50 transition-all duration-500">
+                        <div class="relative overflow-hidden h-48">
+                            <img src="http://static.photos/abstract/640x360/789" alt="AI Chat Interface" class="w-full h-full object-cover transition-transform duration-500">
+                            <div class="project-overlay absolute inset-0 bg-slate-900/80 opacity-0 transition-opacity duration-300 flex items-center justify-center gap-4">
+                                <a href="#" class="p-3 rounded-full bg-violet-600 text-white hover:bg-violet-700 transition-colors">
+                                    <i data-lucide="external-link" class="w-5 h-5"></i>
+                                </a>
+                                <a href="#" class="p-3 rounded-full bg-slate-700 text-white hover:bg-slate-600 transition-colors">
+                                    <i data-lucide="github" class="w-5 h-5"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-white mb-2 group-hover:text-violet-400 transition-colors">NeuralChat UI</h3>
+                            <p class="text-gray-400 text-sm mb-4">Modern AI chat interface with markdown support, code syntax highlighting, and responsive glassmorphism design.</p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-3 py-1 rounded-full text-xs bg-violet-600/20 text-violet-300 border border-violet-500/30">HTML5</span>
+                                <span class="px-3 py-1 rounded-full text-xs bg-violet-600/20 text-violet-300 border border-violet-500/30">CSS3</span>
+                                <span class="px-3 py-1 rounded-full text-xs bg-violet-600/20 text-violet-300 border border-violet-500/30">JavaScript</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Feedback Display Section -->
+    <section id="feedback" class="py-24 bg-slate-900/50">
+        <div class="container mx-auto px-6">
+            <div class="max-w-4xl mx-auto">
+                <div class="text-center mb-12">
+                    <h2 class="font-display text-4xl md:text-5xl font-bold mb-4">
+                        Visitor <span class="text-gradient">Feedback</span>
+                    </h2>
+                    <p class="text-gray-400">What people are saying about my portfolio</p>
+                </div>
+                
+                <div id="feedback-container" class="grid gap-4 max-h-96 overflow-y-auto pr-2 custom-scrollbar">
+                    <!-- Feedback items will be inserted here by JavaScript -->
+                    <div id="no-feedback" class="text-center py-8 text-gray-500 glass rounded-xl border border-violet-500/20 border-dashed">
+                        <i data-lucide="message-circle" class="w-12 h-12 mx-auto mb-3 opacity-50"></i>
+                        <p>No feedback yet. Be the first to leave a message!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact/Feedback Form Section -->
+    <section id="contact" class="py-24 relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-b from-violet-600/5 to-transparent"></div>
+        
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="max-w-2xl mx-auto">
+                <div class="text-center mb-12">
+                    <h2 class="font-display text-4xl md:text-5xl font-bold mb-4">
+                        Get In <span class="text-gradient">Touch</span>
+                    </h2>
+                    <p class="text-gray-400">Have a question or want to work together? Drop me a message!</p>
+                </div>
+                
+                <form id="contact-form" class="glass rounded-2xl p-8 md:p-10 border border-violet-500/20 shadow-2xl shadow-violet-500/10">
+                    <!-- Success Message (Hidden by default) -->
+                    <div id="success-message" class="hidden mb-6 p-4 rounded-lg bg-green-500/20 border border-green-500/50 text-green-300 flex items-center gap-3">
+                        <i data-lucide="check-circle" class="w-5 h-5"></i>
+                        <span>Thank you for your feedback! Your message has been saved.</span>
+                    </div>
+                    
+                    <div class="space-y-6">
+                        <div>
+                            <label for="name" class="block text-sm font-medium text-gray-300 mb-2">Full Name *</label>
+                            <input type="text" id="name" name="name" required 
+                                class="w-full px-4 py-3 rounded-lg bg-slate-800/50 border border-slate-600 text-white placeholder-gray-500 focus:outline-none focus:border-violet-500 focus:ring-2 focus:ring-violet-500/20 transition-all"
+                                placeholder="Enter your name">
+                            <p id="name-error" class="mt-1 text-sm text-red-400 hidden">Please enter your name</p>
+                        </div>
+                        
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-gray-300 mb-2">Email Address *</label>
+                            <input type="email" id="email" name="email" required 
+                                class="w-full px-4 py-3 rounded-lg bg-slate-800/50 border border-slate-600 text-white placeholder-gray-500 focus:outline-none focus:border-violet-500 focus:ring-2 focus:ring-violet-500/20 transition-all"
+                                placeholder="you@example.com">
+                            <p id="email-error" class="mt-1 text-sm text-red-400 hidden">Please enter a valid email address</p>
+                        </div>
+                        
+                        <div>
+                            <label for="message" class="block text-sm font-medium text-gray-300 mb-2">Message *</label>
+                            <textarea id="message" name="message" rows="4" required 
+                                class="w-full px-4 py-3 rounded-lg bg-slate-800/50 border border-slate-600 text-white placeholder-gray-500 focus:outline-none focus:border-violet-500 focus:ring-2 focus:ring-violet-500/20 transition-all resize-none"
+                                placeholder="Your message here..."></textarea>
+                            <p id="message-error" class="mt-1 text-sm text-red-400 hidden">Please enter a message</p>
+                        </div>
+                        
+                        <button type="submit" 
+                            class="w-full py-4 rounded-lg bg-gradient-to-r from-violet-600 to-indigo-600 text-white font-semibold hover:scale-[1.02] transition-transform duration-300 neon-glow flex items-center justify-center gap-2">
+                            <span>Send Message</span>
+                            <i data-lucide="send" class="w-5 h-5"></i>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 border-t border-slate-800">
+        <div class="container mx-auto px-6">
+            <div class="max-w-6xl mx-auto">
+                <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-violet-500 to-indigo-600 flex items-center justify-center font-display font-bold text-white">
+                            AS
+                        </div>
+                        <div>
+                            <div class="font-display font-bold text-white">Aditya Sankpal</div>
+                            <div class="text-sm text-gray-400">CS Student @ Ghraisoni University</div>
+                        </div>
+                    </div>
+                    
+                    <div class="flex gap-6">
+                        <a href="https://github.com" target="_blank" class="text-gray-400 hover:text-violet-400 transition-colors">
+                            <i data-lucide="github" class="w-6 h-6"></i>
+                        </a>
+                        <a href="https://linkedin.com" target="_blank" class="text-gray-400 hover:text-violet-400 transition-colors">
+                            <i data-lucide="linkedin" class="w-6 h-6"></i>
+                        </a>
+                        <a href="mailto:aditya@example.com" class="text-gray-400 hover:text-violet-400 transition-colors">
+                            <i data-lucide="mail" class="w-6 h-6"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="mt-8 pt-8 border-t border-slate-800 text-center text-gray-500 text-sm">
+                    <p>&copy; 2024 Aditya Sankpal. All rights reserved.</p>
+                    <p class="mt-2">Built with HTML, Tailwind CSS & JavaScript</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Initialize Lucide Icons and Scripts -->
+    <script>
+        lucide.createIcons();
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>
